@@ -1,0 +1,31 @@
+version: '3'
+services:
+  web:
+    build: ./web
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - rabbitmq
+
+  grpc:
+    build: ./grpc_service
+    ports:
+      - "50051:50051"
+    depends_on:
+      - rabbitmq
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Adomnikov3
+      POSTGRES_DB: book-service-db
+    ports:
+      - "5432:5432"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"

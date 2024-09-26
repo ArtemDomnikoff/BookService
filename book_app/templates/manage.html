@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="w3-bar w3-large w3-sand">
+  <div class="w3-bar-item w3-left w3-sand">Customer Portal: {{user.username}}</div>
+  <a class="w3-bar-item w3-btn w3-sand w3-right" href="/logout/">Logout</a>
+  <a class="w3-bar-item w3-btn w3-sand w3-right" href="/manage/">Update</a>
+
+</div>
+<h3 class="w3-center" style="padding-top:20"><b>Available options</b></h3>
+<div class="w3-center" style="padding:50px;">
+<table class="w3-table w3-white w3-center">
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Publication date</th>
+  </tr>
+  {% for book in book_list %}
+  <tr>
+    <th>{{book.name}}</th>
+    <th>{{book.author}}</th>
+    <th>{{book.publication_date}}</th>
+    <td>
+      <form action = "/rent/" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="bike_id" value="{{bike.id}}">
+        <input class="w3-btn w3-green" type="submit" value="Rent">
+      </form>
+  </tr>
+
+{% endfor %}
+</table>
+</div>
+{% endblock %}
