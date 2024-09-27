@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from rest_framework import viewsets
-from .models import Book
-from .serializers import BookSerializer
+from book_app.models import Book
+from book_app.serializers import BookSerializer
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from rest_framework.permissions import IsAuthenticated
 import pika
+# Create your views here.
 
 
 class BookViewSet(viewsets.ModelViewSet):

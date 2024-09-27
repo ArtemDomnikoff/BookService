@@ -9,7 +9,7 @@ services:
       - rabbitmq
 
   grpc:
-    build: ./grpc_service
+    build: book_app/grpc_service
     ports:
       - "50051:50051"
     depends_on:

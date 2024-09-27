@@ -1,4 +1,4 @@
-from .views import *
+from book_app.views import *
 from rest_framework.routers import DefaultRouter
 from django.urls import path, include
 
